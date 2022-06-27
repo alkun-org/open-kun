@@ -1,0 +1,45 @@
+{
+    "id": {
+        "type": "string",
+        "description": "Namespace for paths"
+    },
+    "version": {
+        "type": "string",
+        "description": "API schema version related to provider"
+    },
+    "title": {
+        "type": "string"
+    },
+    "description": {
+        "type": "string"
+    },
+    "creator": {
+        "type": "string"
+    },
+
+    "hosts": {
+        "type": "array",
+        "description": "Servers of handler script, labeled host or remote endpoint, eg: myapi.com:9901",
+        "items": {
+            "type": "string",
+            "default": "bayanAlpha",
+        }
+    },
+
+    "paths": {
+        "type": "object",
+        "description": "Handler callback is normalized from path, eg: prayertime/add => prayertime_add",
+        "properties": {
+            "*": {
+                "type": "object",
+                "properties": {
+                    "description": { "type": "string" },
+                    "ask": { "type": "object" },
+                    "answer": { "type": "object" }
+                }
+            }
+        }
+    },
+
+    "required": [ "id", "title", "hosts", "paths" ]
+}

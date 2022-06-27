@@ -1,0 +1,38 @@
+{
+    "header": {
+        "version": "bayan/1.0",
+        "id": "abc123",
+        "time": 1498702197739,
+
+        "language": "en-US",
+        "charset": "utf-8",
+
+        "apiKey": "abc123",
+        "path": "event/add",
+
+        "statusPath": "status/ok",
+        "statusText": "test successful",
+
+    },
+
+    "body": {
+        "title": "Maulidur Rasul 2020",
+        "description": "Celebration of Prophets",
+        "organizer": {
+            "name": "Masjid Salahuddin Al-Ayubi",
+            "organizer_id": "mosque/alayubi"
+        },
+        "start": "2020-05-15T09:00:00Z",
+        "end": "2020-05-15T18:00:00Z",
+        "createdBy": {
+            "name": "Akmal Diable",
+            "user_id": "user/akmaldiable"
+        },
+        "created": "2020-02-14T06:08:39Z",
+        "viewUrl": "https://www.maulid2020.com/home",
+        "properties": [
+            { "key": "Parking", "value": "Free" },
+            { "key": "Attire", "value": "Praying attires" }
+        ]
+    }
+}

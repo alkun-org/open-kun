@@ -1,0 +1,16 @@
+{
+    "id": "prayer_time",
+    "title": "Prayer Time",
+    "description": "Local prayer time",
+    "creator": "user/ahmad",
+
+    "hosts": ["bayanAlpha"],
+    "paths": {
+        "/": {
+            "description": "return prayer times based on params",
+        },
+        "/add": {
+            "description": "add new time"
+        }
+    }
+}
