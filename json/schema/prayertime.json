@@ -1,0 +1,47 @@
+{
+    "id": "prayer_time",
+    "title": "Prayer Time",
+    "description": "Local prayer time",
+    "creator": "user/akmalxxx",
+
+    "hosts": ["bayanAlpha"],
+    "paths": {
+        "/": {
+            "description": "return today's prayer times",
+            "ask": {
+                "type": "object",
+                "properties": {
+                    "date": { "type": "string", "format": "date" },
+                    "latitude": { "type": "decimal" },
+                    "longitude": { "type": "decimal" },
+                    "method": {
+                        "type": "string",
+                        "enum": ["MWL", "ISNA", "Egypt", "Makkah", "Karachi", "Tehran", "Jafari"]
+                    }
+                }
+            },
+
+            "answer": {
+                "type": "object",
+                "properties": {
+                    "times": {
+                        "type": "object",
+                        "properties": {
+                            "fajr": { "type": "string", "format": "time" },
+                            "sunrise": { "type": "string", "format": "time" },
+                            "dhuhr": { "type": "string", "format": "time" },
+                            "asr": { "type": "string", "format": "time" },
+                            "sunset": { "type": "string", "format": "time" },
+                            "maghrib": { "type": "string", "format": "time" },
+                            "isha": { "type": "string", "format": "time" },
+                            "midnight": { "type": "string", "format": "time" }
+                        }
+                    }
+                }
+            }
+        },
+
+        "/add": {}
+
+    }
+}

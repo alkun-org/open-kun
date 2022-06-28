@@ -1,0 +1,24 @@
+{
+    "/": {
+        "ask": {
+            "date": "2022-07-15",
+            "latitude": 3.140853,
+            "longitude": 101.693207,
+            "method": "MWL"
+        },
+
+        "answer": {
+            "times": {
+                "fajr": "05:52",
+                "sunrise": "07:07",
+                "dhuhr": "13:16",
+                "asr": "16:43",
+                "sunset": "",
+                "maghrib": "29:26",
+                "isha": "20:37",
+                "midnight": ""
+            }
+        }
+    }
+
+}
