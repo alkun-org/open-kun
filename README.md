@@ -14,7 +14,7 @@ Our technology stack is simple. We believe in KISS and boring techs.
 You can set up the environment using the following steps:
 
 ```
-$ git clone https://github.com/akmalxxx/open-kun
+$ git clone https://github.com/alkun-org/open-kun
 $ cd open-kun
 ```
 
