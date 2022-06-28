@@ -53,11 +53,8 @@ JSON text must be Utf-8 encoded only.
         }
     },
     "myenum": {                     # example of fixed selection
-        "type": "array",
-        "items": {
-            "type: "string",
-            "enum": ["fajr", "dhuha", ...]
-        }
+        "type: "string",
+        "enum": ["fajr", "dhuha", ...]
     },
     "myref": {                      # example using ref to reuse schema
         "ref": "myobj/propA",       # use same schema as myobj.propA
