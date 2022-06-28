@@ -20,9 +20,9 @@ Below are supported data types, case-sensitive:
 
 Optionally we also support **format** attribute for **string** type, below are pre-defined ones:
 1. base64 - Base64 encoding
-2. date - in ISO 8601 format
-3. time
-4. dateTime
+2. date - Full date in ISO 8601 format
+3. time - Full time in ISO 8601 format
+4. dateTime - Full date and time
 5. uri
 6. email
 
