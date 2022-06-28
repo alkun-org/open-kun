@@ -3,9 +3,7 @@
         "version": "bayan/1.0",
         "id": "abc123",
         "time": 1498702197739,
-
         "language": "en-US",
-        "charset": "utf-8",
 
         "apiKey": "abc123",
         "path": "event/add",

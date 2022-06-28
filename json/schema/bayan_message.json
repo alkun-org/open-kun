@@ -15,14 +15,9 @@
                 "type": "integer",
                 "description": "Epoch time in milliseconds"
             },
-
             "language": {
                 "type": "string",
                 "default": "en-US"
-            },
-            "charset": {
-                "type": "string",
-                "default": "utf-8"
             },
 
             "apiKey": {

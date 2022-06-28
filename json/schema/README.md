@@ -28,6 +28,7 @@ Optionally we also support **format** attribute for **string** type, below are p
 6. email
 
 Format is open value, not restricted to above.
+JSON text must be Utf-8 encoded only.
 
 ### Sample
 ```
