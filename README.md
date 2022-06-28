@@ -1,7 +1,7 @@
 # Welcome to Open-Kun!
 This repo contains Al-Bayan (Instant answer) that we use to serve the APIs on [alkun.org](https://alkun.org/).
 
-All scripts in this repo are standalone and not tied to our engine (Al-Kun Alpha). Feel free to use it on your projects and also don't forget to contribute to this repo.
+All scripts in this repo are standalone and not tied to our engine (Kun Alpha). Feel free to use it on your projects and also don't forget to contribute to this repo.
 
 ## The Stack
 Our technology stack is simple. We believe in KISS and boring techs.
