@@ -6,10 +6,10 @@ Al-Kun introduces a universal schema for our APIs and internals. It is loosely b
 
 There will always be only 1 version. The plan is so the knowledge (Bayan source) we accumulated long lasting.
 
-### Format
+#### Document Type
 Al-Kun Schema itself a JSON Documents. No, we won't add more format in the future. We use **camelCase** naming convention for keys, but flexible on the values.
 
-### Data Types
+#### Data Types
 Below are supported data types, case-sensitive:
 1. string
 2. integer
@@ -18,6 +18,7 @@ Below are supported data types, case-sensitive:
 5. array
 6. object
 
+#### Format
 Optionally we also support **format** attribute for **string** type, below are pre-defined ones:
 1. base64 - Base64 encoding
 2. date - Full date in ISO 8601 format
