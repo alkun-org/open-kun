@@ -5,7 +5,7 @@ All scripts in this repo are standalone and not tied to our engine (Kun Alpha). 
 
 ## The Stack
 Our technology stack is simple. We believe in KISS and boring techs.
-1. Javascript: We use javascript for most of the Bayan Answers.
+1. Javascript (ES6): We use javascript for most of the Bayan Answers.
 2. WebAssembly: To speed up some answers.
 3. Rust: if the answers are very complex and need further optimization.
 
