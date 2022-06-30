@@ -9,7 +9,7 @@
         "/": {
             "description": "return prayer times based on params",
         },
-        "/add": {
+        "add": {
             "description": "add new time"
         }
     }
