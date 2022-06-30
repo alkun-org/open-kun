@@ -1,0 +1,39 @@
+{
+    "id": "greetings",
+    "title": "Greetings",
+    "description": "Hello World example",
+    "creator": "user/akmalxxx",
+
+    "hosts": ["bayanAlpha"],
+    "paths": {
+        "/": {
+            "description": "normal greetings",
+            "answer": {
+                "type": "object",
+                "properties": {
+                    "text": { "type": "string" }
+                }
+            }
+        },
+
+        "sunnah": {
+            "description": "Sunnah way of greetings",
+            "answer": {
+                "type": "object",
+                "properties": {
+                    "text": { "type": "string" }
+                }
+            }
+        },
+
+        "sunnah/morning": {
+            "description": "Sunnah way of greetings with morning wish",
+            "answer": {
+                "type": "object",
+                "properties": {
+                    "text": { "type": "string" }
+                }
+            }
+        }
+    }
+}

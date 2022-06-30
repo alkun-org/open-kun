@@ -15,14 +15,8 @@
     },
 
     "creator": {
-        "type": "object",
-        "properties": {
-            "user": {
-                "type": "string",
-                "description": "User Id registered with alkun.org"
-            },
-            "url": { "type": "uri" }
-        }
+        "type": "string",
+        "description": "User Id registered with alkun.org"
     },
 
     "credits": {
@@ -31,10 +25,12 @@
         "items": {
             "type": "object",
             "properties": {
-                "name": { "type": "string" },
-                "user": { "type": "string" },
+                "name": {
+                    "type": "string",
+                    "description": "Name or registered user id (eg: user/ahmad)"
+                },
                 "url": { "type": "uri" }
-            }   
+            }
         }
     },
 
@@ -55,8 +51,14 @@
                 "type": "object",
                 "properties": {
                     "description": { "type": "string" },
-                    "ask": { "type": "object" },
-                    "answer": { "type": "object" }
+                    "ask": {
+                        "type": "object",
+                        "description": "body schema for ask/requests"
+                    },
+                    "answer": {
+                        "type": "object",
+                        "description": "body schema for answer/response"
+                    }
                 }
             }
         }
