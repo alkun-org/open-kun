@@ -13,8 +13,29 @@
     "description": {
         "type": "string"
     },
+
     "creator": {
-        "type": "string"
+        "type": "object",
+        "properties": {
+            "user": {
+                "type": "string",
+                "description": "User Id registered with alkun.org"
+            },
+            "url": { "type": "uri" }
+        }
+    },
+
+    "credits": {
+        "type": "array",
+        "description": "Please give proper credits to original creator of the script or algorithm",
+        "items": {
+            "type": "object",
+            "properties": {
+                "name": { "type": "string" },
+                "user": { "type": "string" },
+                "url": { "type": "uri" }
+            }   
+        }
     },
 
     "hosts": {
