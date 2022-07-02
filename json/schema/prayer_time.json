@@ -1,0 +1,66 @@
+{
+    "id": "prayer_time",
+    "title": "Prayer Time",
+    "description": "Local prayer time based on calculation",
+    "creator": "user/akmalxxx",
+    "credits": [
+        {"name": "Hamid Zarrabi-Zadeh", "url": "http://praytimes.org/"}
+    ],
+
+    "hosts": ["bayanAlpha"],
+    "paths": {
+        "/": {
+            "description": "return given date's prayer times",
+            "ask": {
+                "type": "object",
+                "properties": {
+                    "config": {
+                        "type": "object",
+                        "properties": {
+                            "method": {
+                                "type": "string",
+                                "enum": ["MWL", "ISNA", "Egypt", "Makkah", "Karachi", "Tehran", "Jafari"]
+                            },
+                            "adjust": {
+                                "type": "object",
+                                "description": "adjustment to method"
+                            },
+                            "offset": {
+                                "type": "object",
+                                "description": "Generated times offset"
+                            },
+                            "format": {
+                                "type": "string",
+                                "enum": ["12h", "24h"]
+                            }
+                        }
+                    },
+                    "coordinate": { "type": "string" },
+                    "date": { "type": "string", "format": "date" },
+                    "timezone": { "type": "integer" },
+                    "dst": { "type": "integer" }
+                }
+            },
+
+            "answer": {
+                "type": "object",
+                "properties": {
+                    "times": {
+                        "type": "object",
+                        "properties": {
+                            "imsak": { "type": "string", "format": "time" },
+                            "fajr": { "type": "string", "format": "time" },
+                            "sunrise": { "type": "string", "format": "time" },
+                            "dhuhr": { "type": "string", "format": "time" },
+                            "asr": { "type": "string", "format": "time" },
+                            "sunset": { "type": "string", "format": "time" },
+                            "maghrib": { "type": "string", "format": "time" },
+                            "isha": { "type": "string", "format": "time" },
+                            "midnight": { "type": "string", "format": "time" }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
