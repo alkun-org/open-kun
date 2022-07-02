@@ -7,25 +7,25 @@
 import { makeBayan } from "https://raw.githubusercontent.com/alkun-org/open-kun/main/javascript/lib/bayan_util.js";
 
 /* "/" ponts to handler main (default) */
-export function main () {
+export function main (ask) {
     const body = {
-        'text': "Marhaba!"
+        text: "Marhaba!"
     };
     return makeBayan({body: body});
 }
 
 /* "sunnah" points to handler sunnah  */
-export function sunnah () {
+export function sunnah (ask) {
     const body = {
-        'text': "Assalam Alaykum!"
+        text: "Assalam Alaykum!"
     };
     return makeBayan({body: body});
 }
 
 /* "sunnah/morning" points to handler sunnah_morning  */
-export function sunnah_morning () {
+export function sunnah_morning (ask) {
     const body = {
-        'text': "Assalam Alaykum, Sabah Al Khair!"
+        text: "Assalam Alaykum, Sabah Al Khair!"
     };
     return makeBayan({body: body});
 }
