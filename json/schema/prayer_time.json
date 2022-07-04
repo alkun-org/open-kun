@@ -1,5 +1,5 @@
 {
-    "id": "prayer_time",
+    "namespace": "prayer_time",
     "title": "Prayer Time",
     "description": "Local prayer time based on calculation",
     "creator": "user/akmalxxx",

@@ -1,5 +1,5 @@
 {
-    "id": "greetings",
+    "namespace": "greetings",
     "title": "Greetings",
     "description": "Hello World example",
     "creator": "user/akmalxxx",

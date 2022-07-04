@@ -1,7 +1,7 @@
 {
-    "id": {
+    "namespace": {
         "type": "string",
-        "description": "Namespace for paths"
+        "description": "Namespace for paths, alphanumeric and underscore only"
     },
     "version": {
         "type": "string",
@@ -64,5 +64,5 @@
         }
     },
 
-    "required": [ "id", "title", "hosts", "paths" ]
+    "required": [ "namespace", "title", "hosts", "paths" ]
 }
