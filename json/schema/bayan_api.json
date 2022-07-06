@@ -39,7 +39,7 @@
         "description": "Servers of handler script, labeled host or remote endpoint, eg: myapi.com:9901",
         "items": {
             "type": "string",
-            "default": "bayanAlpha",
+            "default": "bayanAlpha"
         }
     },
 

@@ -9,7 +9,7 @@
             },
             "id": {
                 "type": "string",
-                "description": "Message Id, if omit means headless message",
+                "description": "Message Id, if omit means headless message"
             },
             "time": {
                 "type": "integer",
