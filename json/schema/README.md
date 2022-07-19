@@ -30,6 +30,11 @@ Optionally we also support **format** attribute for **string** type, below are p
 Format is open value, not restricted to above.
 JSON text must be Utf-8 encoded only.
 
+### Numbers Range
+Range limiting is only for integer and decimal types.
+1. minimum - Minimum value accepted.
+2. maximum - Maximum value accepted.
+
 ### Sample
 ```
 {
