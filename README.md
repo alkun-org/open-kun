@@ -34,7 +34,7 @@ https://raw.githubusercontent.com/alkun-org/open-kun/main/javascript/lib/bayan_u
 
 3. Use CDN link
 ```
-https://cdn.jsdelivr.net/gh/alkun-org/open-kun/javascript/lib/bayan_util.js
+https://cdn.jsdelivr.net/gh/alkun-org/open-kun@main/javascript/lib/bayan_util.js
 ```
 
 ## Resources
