@@ -1,0 +1,51 @@
+{
+    "namespace": {
+        "type": "string",
+        "description": "Namespace for paths, must prefix with box_"
+    },
+    "version": {
+        "type": "string",
+        "description": "Box version related to original source"
+    },
+    "title": {
+        "type": "string"
+    },
+    "description": {
+        "type": "string"
+    },
+    "tags": {
+        "type": "array",
+        "description": "List of Tag that can be used to classify this box",
+        "items": { "type": "string" }
+    },
+
+    "creator": {
+        "type": "string",
+        "description": "User Id registered with alkun.org"
+    },
+
+    "createdOn": {
+        "type": "string",
+        "format": "dateTime",
+        "description": "Box creation datetime"
+    },
+
+    "credits": {
+        "type": "array",
+        "description": "Please give proper credits to original creator of the source data",
+        "items": {
+            "type": "object",
+            "properties": {
+                "name": {
+                    "type": "string",
+                    "description": "Name or registered user id (eg: user/ahmad)"
+                },
+                "url": { "type": "uri" }
+            }
+        }
+    },
+
+    "body": {},
+
+    "required": [ "namespace", "title", "body" ]
+}
