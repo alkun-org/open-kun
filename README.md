@@ -19,14 +19,23 @@ Our technology stack is simple. We believe in KISS and boring techs.
 3. Rust: if the answers are very complex and need further optimization.
 
 
-## Setting up
-You can set up the environment using the following steps:
+## Usage
+There are few ways to use the codes rom this Repo.
 
+1. Clone Repo and use it locally.
 ```
 $ git clone https://github.com/alkun-org/open-kun
 $ cd open-kun
 ```
+2. Link directly to github file
+```
+https://raw.githubusercontent.com/alkun-org/open-kun/main/javascript/lib/bayan_util.js
+```
 
+3. Use CDN link
+```
+https://cdn.jsdelivr.net/gh/alkun-org/open-kun@main/javascript/lib/bayan_util.js
+```
 
 ## Resources
 - Join the [Al-Kun Reddit Sub](https://www.reddit.com/r/AlKun/) for disccusions and ideas.
