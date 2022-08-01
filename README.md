@@ -38,4 +38,5 @@ https://cdn.jsdelivr.net/gh/alkun-org/open-kun@main/javascript/lib/bayan_util.js
 ```
 
 ## Resources
+- [Open Data](https://github.com/alkun-org/open-kun-data)
 - Join the [Al-Kun Reddit Sub](https://www.reddit.com/r/AlKun/) for disccusions and ideas.
