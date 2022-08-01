@@ -2,41 +2,36 @@
 
 /**
  * Make new Bayan object
+ * @param {object} request - request object
  * @param {object} param
- * @param {string=} param.version - Bayan version
- * @param {string=} param.id - give Bayan an Id as your reference
- * @param {string=} param.language - Bayan language
- * @param {string=} param.apiKey - Bayan language
- * @param {string=} param.path - Bayan API path
- * @param {string=} param.statusPath - Status path
- * @param {string=} param.statusText - Status detail text
+ * @param {string=} param.identifier - Give an identifier as your message reference
+ * @param {string=} param.inLanguage - in which language?
+ * @param {string=} param.apiKey - API key
+ * @param {string=} param.url - Bayan API URL
+ * @param {string=} param.status - Status URL / text
  * @param {object=} param.body - Body object
  * @return {object} - Bayan object
  * 
  * @example
- * makeBayan({id: "test123"});
+ * makeBayan(request, {status: "/status/ok"});
  */
-export function makeBayan({
-	version = "bayan/1.0",
-	id,
-	language = "en-US",
+export function makeBayan(request, {
+	identifier,
+	inLanguage = "en-US",
 	apiKey,
-	path,
-	statusPath = "status/ok",
-	statusText,
+	url,
+	status = "/status/ok",
 	body
-	} = {}) {					// argument is optional
+	} = {}) {
+
+	if (!request) request = {};
 
 	return {
-		header: {
-			version: "bayan/1.0",
-			id: id,
-			time: Date.now(),
-			language: language,
-			statusPath: statusPath || "status/ok",
-			statusText: statusText
-		},
+		identifier: request.identifier || identifier,
+		inLanguage: request.inLanguage || inLanguage,
+		url: request.url || url,
+		dateSent: new Date().toISOString(),
+		status: status || "/status/ok",
 		body: body
 	}
 }
-

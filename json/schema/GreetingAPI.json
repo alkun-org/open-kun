@@ -2,7 +2,7 @@
     "@namespace": "https://alkun.org/schema",
 
     "@define": {
-        "@type": "APIGreeting",
+        "@type": "GreetingAPI",
         "@extend": "BayanAPI",
 
         "host": "https://alkun.org/bayan",

@@ -8,9 +8,17 @@
 import { makeBayan } from "https://raw.githubusercontent.com/alkun-org/open-kun/main/javascript/lib/bayan_util.js";
 
 /* API */
-export function main (ask) {
-    let body = ask.body;
-    const times = new PrayerTimes(body.config || {})
+export function main (request) {
+    let body = request.body;
+
+	if (body.setting) { // remap some variables
+		let s = body.setting;
+		if (s.adjustment) s.adjust = s.adjusment;
+		if (s.timeOffset) s.offset = s.timeOffset;
+		s.format = (s.militaryTime === true) ? "24h" : "12h";
+	}
+
+    const times = new PrayerTimes(body.setting || {})
         .getTimes(body.coordinate, body.date,
             body.timezone || 0,
             body.dst || 0);
@@ -18,41 +26,41 @@ export function main (ask) {
 	body = {
 		times: times
 	};
-    return makeBayan({body: body});
+    return makeBayan(request, {body: body});
 }
 
 
 /* Implementation */
-const TIMES = ["imsak", "fajr", "sunrise", "dhuhr", "asr", "sunset", "maghrib", "isha", "midnight"];
+const TIMES = ["Imsak", "Fajr", "Sunrise", "Dhuhr", "Asr", "Sunset", "Maghrib", "Isha", "Midnight"];
 
 const METHODS = {
     MWL: {
         name: "Muslim World League",
-        params: { fajr:18, maghrib:"0 min", isha:17, midnight:"Standard" }
+        params: { Fajr:18, Maghrib:"0 min", Isha:17, Midnight:"Standard" }
     },
     ISNA: {
         name: "Islamic Society of North America (ISNA)",
-        params: { fajr:15, maghrib:"0 min", isha:15, midnight:"Standard" }
+        params: { Fajr:15, Maghrib:"0 min", Isha:15, Midnight:"Standard" }
     },
     Egypt: {
         name: "Egyptian General Authority of Survey",
-        params: { fajr:19.5, maghrib:"0 min", isha:17.5, midnight:"Standard" }
+        params: { Fajr:19.5, Maghrib:"0 min", Isha:17.5, Midnight:"Standard" }
     },
-    Makkah: { // fajr was 19 degrees before 1430 hijri
+    Makkah: { // Fajr was 19 degrees before 1430 hijri
         name: "Umm Al-Qura University, Makkah",
-        params: { fajr:18.5, maghrib:"0 min", isha:"90 min", midnight:"Standard" }
+        params: { Fajr:18.5, Maghrib:"0 min", Isha:"90 min", Midnight:"Standard" }
     },
     Karachi: {
         name: "University of Islamic Sciences, Karachi",
-        params: { fajr:18, maghrib:"0 min", isha:18, midnight:"Standard" }
+        params: { Fajr:18, Maghrib:"0 min", Isha:18, Midnight:"Standard" }
     },
-    Tehran: { // isha is not explicitly specified in this method
+    Tehran: { // Isha is not explicitly specified in this method
         name: "Institute of Geophysics, University of Tehran",
-        params: { fajr:17.7, isha:14, maghrib:4.5, midnight:"Jafari" }
+        params: { Fajr:17.7, Isha:14, Maghrib:4.5, Midnight:"Jafari" }
     },
     Jafari: {
         name: "Shia Ithna-Ashari, Leva Institute, Qum",
-        params: { fajr:16, isha:14, maghrib:4, midnight:"Jafari" }
+        params: { Fajr:16, Isha:14, Maghrib:4, Midnight:"Jafari" }
     }
 };
 
@@ -81,9 +89,9 @@ export class PrayerTimes {
         } = {}) {
 
         this.cfg = Object.assign({
-            imsak    : "10 min",
-            dhuhr    : "0 min",
-            asr      : "Standard",
+            Imsak    : "10 min",
+            Dhuhr    : "0 min",
+            Asr      : "Standard",
             highLats : "NightMiddle"
         }, METHODS[method].params);
 
@@ -125,17 +133,17 @@ export class PrayerTimes {
         // compute prayer times
 		// default times
 		let times = {
-			imsak: 5, fajr: 5, sunrise: 6, dhuhr: 12,
-			asr: 13, sunset: 18, maghrib: 18, isha: 18
+			Imsak: 5, Fajr: 5, Sunrise: 6, Dhuhr: 12,
+			Asr: 13, Sunset: 18, Maghrib: 18, Isha: 18
 		};
     
 		for (let i=1 ; i <= this.numIterations; i++) this.computePrayerTimes(times, ctx);
 		this.adjustTimes(times, ctx);
 
-		// add midnight time
-		times.midnight = (this.cfg.midnight == "Jafari") ?
-				times.sunset+ this.timeDiff(times.sunset, times.fajr)/ 2 :
-				times.sunset+ this.timeDiff(times.sunset, times.sunrise)/ 2;
+		// add Midnight time
+		times.Midnight = (this.cfg.Midnight == "Jafari") ?
+				times.Sunset+ this.timeDiff(times.Sunset, times.Fajr)/ 2 :
+				times.Sunset+ this.timeDiff(times.Sunset, times.Sunrise)/ 2;
 
 	    // apply offsets to the times
 		for (let i in times) times[i] += offset[i] / 60;
@@ -165,18 +173,18 @@ export class PrayerTimes {
 	    // convert hours to day portions
 		for (let i in times) times[i] /= 24;
 
-    	//sun angle for sunset/sunrise
+    	//sun angle for Sunset/Sunrise
 		const angle = 0.0347* Math.sqrt(ctx.elev); // an approximation
 		const riseSetAngle = 0.833 + angle;
     
-		times.imsak   = this.sunAngleTime(this.eval(this.cfg.imsak), times.imsak, ctx, "ccw");
-		times.fajr    = this.sunAngleTime(this.eval(this.cfg.fajr), times.fajr, ctx, "ccw");
-		times.sunrise = this.sunAngleTime(riseSetAngle, times.sunrise, ctx, "ccw");
-		times.dhuhr   = this.midDay(times.dhuhr, ctx);
-		times.asr     = this.asrTime(times.asr, ctx);
-		times.sunset  = this.sunAngleTime(riseSetAngle, times.sunset, ctx);
-		times.maghrib = this.sunAngleTime(this.eval(this.cfg.maghrib), times.maghrib, ctx);
-		times.isha    = this.sunAngleTime(this.eval(this.cfg.isha), times.isha, ctx);
+		times.Imsak   = this.sunAngleTime(this.eval(this.cfg.Imsak), times.Imsak, ctx, "ccw");
+		times.Fajr    = this.sunAngleTime(this.eval(this.cfg.Fajr), times.Fajr, ctx, "ccw");
+		times.Sunrise = this.sunAngleTime(riseSetAngle, times.Sunrise, ctx, "ccw");
+		times.Dhuhr   = this.midDay(times.Dhuhr, ctx);
+		times.Asr     = this.asrTime(times.Asr, ctx);
+		times.Sunset  = this.sunAngleTime(riseSetAngle, times.Sunset, ctx);
+		times.Maghrib = this.sunAngleTime(this.eval(this.cfg.Maghrib), times.Maghrib, ctx);
+		times.Isha    = this.sunAngleTime(this.eval(this.cfg.Isha), times.Isha, ctx);
 	}
 
 	adjustTimes(times, ctx) {
@@ -185,23 +193,23 @@ export class PrayerTimes {
 
 		if (this.cfg.highLats != "None") this.adjustHighLats(times);
 
-		if (this.isMin(this.cfg.imsak))
-			times.imsak = times.fajr- this.eval(this.cfg.imsak)/ 60;
-		if (this.isMin(this.cfg.maghrib))
-			times.maghrib = times.sunset+ this.eval(this.cfg.maghrib)/ 60;
-		if (this.isMin(this.cfg.isha))
-			times.isha = times.maghrib+ this.eval(this.cfg.isha)/ 60;
-        times.dhuhr += this.eval(this.cfg.dhuhr)/ 60;
+		if (this.isMin(this.cfg.Imsak))
+			times.Imsak = times.Fajr- this.eval(this.cfg.Imsak)/ 60;
+		if (this.isMin(this.cfg.Maghrib))
+			times.Maghrib = times.Sunset+ this.eval(this.cfg.Maghrib)/ 60;
+		if (this.isMin(this.cfg.Isha))
+			times.Isha = times.Maghrib+ this.eval(this.cfg.Isha)/ 60;
+        times.Dhuhr += this.eval(this.cfg.Dhuhr)/ 60;
 	}
 
 	/* adjust times for locations in higher latitudes */
 	adjustHighLats(times) {
-		const nightTime = this.timeDiff(times.sunset, times.sunrise);
+		const nightTime = this.timeDiff(times.Sunset, times.Sunrise);
 
-		times.imsak = this.adjustHLTime(times.imsak, times.sunrise, this.eval(this.cfg.imsak), nightTime, "ccw");
-		times.fajr  = this.adjustHLTime(times.fajr, times.sunrise, this.eval(this.cfg.fajr), nightTime, "ccw");
-		times.isha  = this.adjustHLTime(times.isha, times.sunset, this.eval(this.cfg.isha), nightTime);
-		times.maghrib = this.adjustHLTime(times.maghrib, times.sunset, this.eval(this.cfg.maghrib), nightTime);
+		times.Imsak = this.adjustHLTime(times.Imsak, times.Sunrise, this.eval(this.cfg.Imsak), nightTime, "ccw");
+		times.Fajr  = this.adjustHLTime(times.Fajr, times.Sunrise, this.eval(this.cfg.Fajr), nightTime, "ccw");
+		times.Isha  = this.adjustHLTime(times.Isha, times.Sunset, this.eval(this.cfg.Isha), nightTime);
+		times.Maghrib = this.adjustHLTime(times.Maghrib, times.Sunset, this.eval(this.cfg.Maghrib), nightTime);
 	}
 
 	/* adjust a time for higher latitudes */
@@ -247,8 +255,8 @@ export class PrayerTimes {
 	/* compute asr time */
 	asrTime(time, ctx) {
         // get shadow factor
-        let factor = { Standard: 1, Hanafi: 2 }[this.cfg.asr];
-		factor = factor || this.eval(this.cfg.asr);
+        let factor = { Standard: 1, Hanafi: 2 }[this.cfg.Asr];
+		factor = factor || this.eval(this.cfg.Asr);
 
         // compute
         const decl = this.sunPosition(ctx.jDate + time).declination;
