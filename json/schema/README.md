@@ -26,7 +26,6 @@ List of Keywords:
 **@enum** - Enumeration allow you to set a list of allowed values \
 **@default** - Default value for a property \
 **@required** - a set of required properties for the schema \
-**@base** - Base URL for the document, default to document origin \
 **@example** - Use to showcase example usage of the schema definition
 
 Example:
