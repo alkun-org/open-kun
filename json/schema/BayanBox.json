@@ -1,0 +1,25 @@
+{
+    "@namespace": "https://alkun.org/schema",
+
+    "@define": {
+        "@type": "BayanBox",
+        "@extend": "CreativeWork",
+        "@comment": "Bayan archive format on alkun.org, serializable to JSON and CBOR",
+
+        "body": {
+            "@comment": "Archive content"
+        },
+
+        "@required": ["body"],
+
+        "@example": {
+            "@type": "BayanBox",
+            "version": 1.0,
+            "identifier": "myprofilebox123",
+            "dateCreated": "2016-04-21T20:00",
+            "body": {
+                "petName": "Bugs Bunny"
+            }
+        }
+    }
+}

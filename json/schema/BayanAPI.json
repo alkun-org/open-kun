@@ -1,0 +1,59 @@
+{
+    "@namespace": "https://alkun.org/schema",
+
+    "@define": [
+        {
+            "@type": "BayanAPIPath",
+            "@extend": "Thing",
+            "@comment": "Describing API path request format",
+
+            "request": {
+                "@comment": "body schema for request"
+            },
+            "response": {
+                "@comment": "body schema for response"
+            },
+
+            "@required": ["url"]
+        },
+    
+        {
+            "@type": "BayanAPI",
+            "@extend": "CreativeWork",
+            "@comment": "Use to describe API format on alkun.org",
+
+            "host": {
+                "@type": ["Text", "URL"],
+                "@comment": "Server / remote endpoint of handler script, eg: myapi.com:9901",
+                "@default": "https://alkun.org/bayan"
+            },
+        
+            "path": {
+                "@type": "BayanAPIPath",
+                "@comment": "Handler callback is normalized from path, eg: /greetings/morning => greetings_morning",
+            },
+
+            "@required": ["host", "path"],
+
+            "@example": {
+                "@define": {
+                    "@type": "EventAPI",
+                    "@extend": "BayanAPI",
+        
+                    "host": "https://alkun.org/bayan",
+                    "path": [
+                        {
+                            "url": "/",
+                            "request": {
+                                "location": { "@type": ["Text", "Location"] }
+                            },
+                            "response": {
+                                "event": { "@type": "Event" }
+                            }
+                        }
+                    ]
+                }
+            }
+        }
+    ]
+}

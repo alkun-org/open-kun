@@ -1,0 +1,55 @@
+{
+    "@namespace": "https://alkun.org/schema",
+
+    "@define": {
+        "@type": "APIGreeting",
+        "@extend": "BayanAPI",
+
+        "host": "https://alkun.org/bayan",
+        "path": [
+            {
+                "url": "/",
+                "@comment": "Normal greetings",
+                "response": {
+                    "text": { "@type": "Text" }
+                }
+            },
+
+            {
+                "url": "/sunnah",
+                "@comment": "Sunnah way of greetings",
+                "response": {
+                    "text": { "@type": "Text" }
+                }
+            },
+
+            {
+                "url": "/sunnah/morning",
+                "@comment": "Sunnah way of greetings with morning wish",
+                "response": {
+                    "text": { "@type": "Text" }
+                }
+            }
+        ],
+
+        "@example": [
+            {
+                "@type": "BayanMessage",
+                "@comment": "Example request",
+                "url": "/APIGreeting/sunnah/morning",
+            },
+    
+            {
+                "@type": "BayanMessage",
+                "@comment": "Example response",
+                "url": "/APIGreeting/sunnah/morning",
+                "dateSent": "2016-04-21T20:00",
+                "inLanguage": "en",
+                "status": "/status/ok",
+                "body": {
+                    "text": "Assalam Alaykum, Sabah Al Khair!"
+                }
+            }
+        ]
+    }
+}

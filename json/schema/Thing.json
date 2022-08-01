@@ -1,0 +1,36 @@
+{
+    "@namespace": "https://alkun.org/schema",
+
+    "@define": {
+        "@type": "Thing",
+        "@comment": "The most generic type of item",
+
+        "identifier": {
+            "@type": ["Text", "URL"],
+            "@comment": "Represents any kind of identifier for any kind of Thing, such as ISBNs, GTIN codes, UUIDs etc."
+        },
+
+        "name": {
+            "@type": "Text",
+            "@comment": "The name of the item."
+        },
+
+        "alternateName": {
+            "@type": "Text",
+            "@comment": "An alias for the item."
+        },
+
+        "description": {
+            "@type": "Text"
+        },
+
+        "url": {
+            "@type": "URL"
+        },
+
+        "image": {
+            "@type": ["URL", "ImageObject"],
+            "@comment": "An image of the item"
+        }
+    }
+}

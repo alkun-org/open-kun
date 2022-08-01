@@ -1,0 +1,63 @@
+{
+    "@namespace": "https://alkun.org/schema",
+
+    "@define": {
+        "@type": "CreativeWork",
+        "@extend": "Thing",
+        "@comment": "The most generic kind of creative work, including books, movies, photographs, software programs, etc",
+
+        "version": {
+            "@type": ["Number", "Text"],
+            "@comment": "The version of the work"
+        },
+
+        "creator": {
+            "@type": ["Person", "Organization"],
+            "@comment": "The creator/author of this work."
+        },
+
+        "contributor": {
+            "@type": ["Person", "Organization"],
+            "@comment": "A secondary contributor to the work."
+        },
+
+        "creditText": {
+            "@type": "Text",
+            "@comment": "Credit person(s) and/or organization(s) associated with this work"
+        },
+
+        "logo": {
+            "@type": ["URL", "ImageObject"]
+        },
+
+        "dateCreated": {
+            "@type": ["Date", "DateTime"],
+            "@comment": "The date on which the work was created or added"
+        },
+
+        "dateModified": {
+            "@type": ["Date", "DateTime"],
+            "@comment": "The date on which the work was most recently modified"
+        },
+
+        "keywords": {
+            "@type": "Text",
+            "@comment": "Keywords or tags used to describe some item"
+        },
+
+        "license": {
+            "@type": "URL",
+            "@comment": "A license document that applies to this content"
+        },
+
+        "maintainer": {
+            "@type": ["Person", "Organization"],
+            "@comment": "An entity that manage this work"
+        },
+
+        "text": {
+            "@type": "Text",
+            "@comment": "The textual content of this work"
+        }
+    }
+}

@@ -1,0 +1,46 @@
+{
+    "@namespace": "https://alkun.org/schema",
+
+    "@define": [
+        {
+            "@type": "Text",
+            "@comment": "A sequence of UTF-8 characters"
+        },
+
+        {
+            "@type": "Number",
+            "@comment": "Can be an integer or decimal"
+        },
+
+        {
+            "@type": "Boolean",
+            "@enum": [true, false],
+            "@comment": "Boolean data type, value is [true, false]"
+        },
+
+        {
+            "@type": "Binary",
+            "@comment": "A raw bytes sequence"
+        },
+
+        {
+            "@type": "Date",
+            "@comment": "A date value in ISO 8601 format"
+        },
+
+        {
+            "@type": "Time",
+            "@comment": "A time value in form of hh:mm:ss[Z|(+|-)hh:mm]"
+        },
+
+        {
+            "@type": "DateTime",
+            "@comment": "A combination of date and time in ISO 8601 format"
+        },
+
+        {
+            "@type": "URL",
+            "@comment": "A Uniform Resource Locator or web address"
+        }
+    ]
+}
