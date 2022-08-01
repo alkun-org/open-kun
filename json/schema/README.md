@@ -95,4 +95,4 @@ Below are basic data types defined inside [DataType.json](https://alkun.org/sche
 **URL** - A Uniform Resource Locator or web address
 
 
-*Notes: Previously the specification was based Open-API. We decided to move to more semantic web format instead to allow a meaningful API etc.*
+*Notes: Previously the specification was based on Open-API. We decided to move to semantic web format instead to allow a meaningful API etc.*
