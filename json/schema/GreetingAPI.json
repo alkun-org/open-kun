@@ -3,10 +3,9 @@
 
     "@define": {
         "@type": "GreetingAPI",
-        "@extend": "BayanAPI",
+        "@extend": "API",
 
-        "host": "https://alkun.org/bayan",
-        "path": [
+        "requestEndPoint": [
             {
                 "url": "/",
                 "@comment": "Normal greetings",
@@ -30,26 +29,26 @@
                     "text": { "@type": "Text" }
                 }
             }
-        ],
-
-        "@example": [
-            {
-                "@type": "BayanMessage",
-                "@comment": "Example request",
-                "url": "/APIGreeting/sunnah/morning",
-            },
-    
-            {
-                "@type": "BayanMessage",
-                "@comment": "Example response",
-                "url": "/APIGreeting/sunnah/morning",
-                "dateSent": "2016-04-21T20:00",
-                "inLanguage": "en",
-                "status": "/status/ok",
-                "body": {
-                    "text": "Assalam Alaykum, Sabah Al Khair!"
-                }
-            }
         ]
-    }
+    },
+
+    "@example": [
+        {
+            "@type": "BayanMessage",
+            "@comment": "Example request",
+            "url": "/GreetingAPI/sunnah/morning",
+        },
+
+        {
+            "@type": "BayanMessage",
+            "@comment": "Example response",
+            "url": "/GreetingAPI/sunnah/morning",
+            "dateSent": "2016-04-21T20:00",
+            "inLanguage": "en",
+            "status": "/status/ok",
+            "body": {
+                "text": "Assalam Alaykum, Sabah Al Khair!"
+            }
+        }
+    ]
 }

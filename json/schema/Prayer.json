@@ -1,0 +1,53 @@
+{
+    "@namespace": "https://alkun.org/schema",
+
+    "@define": [
+        {
+            "@type": "Fajr",
+            "@comment": "The first of five daily prayers by Muslim"
+        },
+
+        {
+            "@type": "Dhuhr",
+            "@comment": "The second of five daily prayers by Muslim"
+        },
+
+        {
+            "@type": "Asr",
+            "@comment": "The third of five daily prayers by Muslim"
+        },
+
+        {
+            "@type": "Maghrib",
+            "@comment": "The fourth of five daily prayers by Muslim"
+        },
+
+        {
+            "@type": "Isha",
+            "@comment": "The five of five daily prayers by Muslim"
+        },
+
+        {
+            "@type": "Imsak",
+            "@comment": "Time to stop eating and drinking when the dawn comes"
+        },
+
+        {
+            "@type": "PrayerName",
+            "@enum": ["Fajr", "Dhuhr", "Asr", "Maghrib", "Isha"]
+        },
+
+        {
+            "@type": "PrayerTime",
+            "name": {
+                "@type": "Text", 
+                "@enum" : ["Imsak", "Fajr", "Sunrise", "Dhuhr", "Sunset", "Maghrib", "Isha", "Midnight"],
+                "@comment": "Prayer and related times"
+            },
+            "time": {
+                "@type": "Time"
+            }
+        }
+
+    ]
+}

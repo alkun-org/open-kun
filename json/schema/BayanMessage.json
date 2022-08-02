@@ -28,20 +28,20 @@
             "@comment": "Message body"
         },
 
-        "@required": ["url"],
+        "@required": ["url"]
+    },
 
-        "@example": {
-            "@type": "BayanMessage",
-            "identifier": "abci23",
-            "dateSent": "2016-04-21T20:00",
-            "inLanguage": "en",
-            "apiKey": "abc123",
-            "url": "/APIEvent/add",
-            "body": {
-                "@type": "Event",
-                "title": "Maulidur Rasul 2020",
-                "description": "Celebration of Prophets"
-            }
+    "@example": {
+        "@type": "BayanMessage",
+        "identifier": "abci23",
+        "dateSent": "2016-04-21T20:00",
+        "inLanguage": "en",
+        "apiKey": "abc123",
+        "url": "/APIEvent/add",
+        "body": {
+            "@type": "Event",
+            "title": "Maulidur Rasul 2020",
+            "description": "Celebration of Prophets"
         }
     }
 }

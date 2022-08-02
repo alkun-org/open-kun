@@ -10,16 +10,16 @@
             "@comment": "Archive content"
         },
 
-        "@required": ["body"],
+        "@required": ["body"]
+    },
 
-        "@example": {
-            "@type": "BayanBox",
-            "version": 1.0,
-            "identifier": "myprofilebox123",
-            "dateCreated": "2016-04-21T20:00",
-            "body": {
-                "petName": "Bugs Bunny"
-            }
+    "@example": {
+        "@type": "BayanBox",
+        "version": 1.0,
+        "identifier": "myprofilebox123",
+        "dateCreated": "2016-04-21T20:00",
+        "body": {
+            "petName": "Bugs Bunny"
         }
     }
 }

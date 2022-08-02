@@ -1,11 +1,8 @@
 {
     "@namespace": "https://alkun.org/schema",
 
-    "@define": {
+    "@instance": {
         "@type": "PrayerTimeAPI",
-        "@extend": "BayanAPI",
-        "@comment": "Official Prayer time API on alkun.org",
-
         "creator": {
             "@type": "Person",
             "name": "Hamid Zarrabi-Zadeh",
@@ -16,9 +13,15 @@
             "@type": "Person",
             "name": "Akmal Mualim",
             "identifier": "https://alkun.org/me/akmalxxx"
-        },
+        }
+    },
 
-        "path": [
+    "@define": {
+        "@type": "PrayerTimeAPI",
+        "@extend": "API",
+        "@comment": "Official Prayer time API on alkun.org",
+
+        "requestEndPoint": [
             {
                 "url": "/",
                 "@comment": "return given date's prayer times",
@@ -26,11 +29,12 @@
                     "setting": {
                         "method": {
                             "@type": "Text",
-                            "@enum": ["MWL", "ISNA", "Egypt", "Makkah", "Karachi", "Tehran", "Jafari"]
+                            "@enum": ["MWL", "ISNA", "Egypt", "Makkah", "Karachi", "Tehran", "Jafari"],
+                            "@default": "MWL"
                         },
                         "adjustment": {
                             "@type": "PropertyValue",
-                            "@comment": "adjustment to method"
+                            "@comment": "adjustment to selected method"
                         },
                         "timeOffset": {
                             "@type": "PropertyValue",
@@ -42,63 +46,61 @@
                     },
                     "geo": { "@type": "GeoCoordinates" },
                     "date": {
-                        "@type": ["Date", "DateTime"],
-                        "@comment": "Timezone offset can also be supplied using full DateTime here"
+                        "@type": "Date"
                     },
                     "timezone": { "@type": ["Number", "Text"] },
                     "dst": {
                         "@type": "Number",
                         "@comment": "Daylight Saving Timezone offset"
                     },
-
                     "@required": ["date", "geo"]
                 },
 
                 "response": {
                     "prayerTime": {
-                        "@type": "PropertyValue"
+                        "@type": "PrayerTime"
                     }
                 }
             }
 
-        ],
+        ]
+    },
 
-        "@example": [
-            {
-                "@type": "BayanMessage",
-                "@comment": "Example request",
-                "url": "/APIPrayerTime",
-                "body": {
-                    "setting": {
-                        "method": "ISNA"
-                    },
-                    "geo": {
-                        "latitude": 3.140853,
-                        "longitude": 101.693207
-                    },
-                    "date": "2022-07-15",
-                    "timezone": "+08:00"
-                }
-            },
-    
-            {
-                "@type": "BayanMessage",
-                "@comment": "Example response",
-                "url": "/APIPrayerTime",
-                "body": {
-                    "prayerTime": [
-                        { "name": "Imsak", "value": "05:43" },
-                        { "name": "Fajr", "value": "05:53" },
-                        { "name": "Sunrise", "value": "07:08" },
-                        { "name": "Dhuhr", "value": "13:17" },
-                        { "name": "Asr", "value": "16:44" },
-                        { "name": "Sunset", "value": "19:26" },
-                        { "name": "Maghrib", "value": "19:26" },
-                        { "name": "Isha", "value": "20:37" },
-                        { "name": "Midnight", "value": "01:17" }
-                    ]
+    "@example": [
+        {
+            "@type": "BayanMessage",
+            "@comment": "Example request",
+            "url": "/PrayerTimeAPI",
+            "body": {
+                "setting": {
+                    "method": "MWL"
+                },
+                "geo": {
+                    "latitude": 3.140853,
+                    "longitude": 101.693207
+                },
+                "date": "2022-07-15",
+                "timezone": "+08:00"
+            }
+        },
+
+        {
+            "@type": "BayanMessage",
+            "@comment": "Example response",
+            "url": "/PrayerTimeAPI",
+            "body": {
+                "prayerTime": {
+                    "Imsak" : "05:43",
+                    "Fajr" : "05:53",
+                    "Sunrise" : "07:08",
+                    "Dhuhr" : "13:17",
+                    "Asr" : "16:44",
+                    "Sunset" : "19:26",
+                    "Maghrib" : "19:26",
+                    "Isha" : "20:37",
+                    "Midnight" : "01:17"
                 }
             }
-        ]
-    }
+        }
+    ]
 }
