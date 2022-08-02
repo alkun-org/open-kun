@@ -3,6 +3,8 @@
 
     "@instance": {
         "@type": "PrayerTimeAPI",
+        "identifier" : "about",
+
         "creator": {
             "@type": "Person",
             "name": "Hamid Zarrabi-Zadeh",
@@ -12,7 +14,7 @@
         "contributor": {
             "@type": "Person",
             "name": "Akmal Mualim",
-            "identifier": "https://alkun.org/me/akmalxxx"
+            "url": "https://alkun.org/me/akmal-mualim"
         }
     },
 

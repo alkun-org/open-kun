@@ -1,6 +1,17 @@
 {
     "@namespace": "https://alkun.org/schema",
 
+    "@instance": {
+        "@type": "GreetingAPI",
+        "identifier" : "about",
+
+        "creator": {
+            "@type": "Person",
+            "name": "Akmal Mualim",
+            "url": "https://alkun.org/me/akmal-mualim"
+        }
+    },
+
     "@define": {
         "@type": "GreetingAPI",
         "@extend": "API",
