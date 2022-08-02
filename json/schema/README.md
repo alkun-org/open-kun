@@ -13,13 +13,14 @@ Bayan is case-sensitive. Use **TitleCase** for type (class) and **camelCase** fo
 
 ### Schema Specification
 
-Bayan specification is frozen and will not evolve, only vocabulary will. The plan is so the knowledge (Bayan source) we accumulated long lasting.
+Bayan specification will be frozen once agreed and will not evolve, only vocabulary will. The plan is so the knowledge (Bayan source) we accumulated long lasting.
 Below is the complete specification:
 
 List of Keywords:
 
 **@namespace** - Use namespace to import the vocabularies required \
 **@define** - implement our own class/type \
+**@instance** - create instance from given identifier, by default will create on https://alkun.org/i/TYPE/identifier \
 **@type** - A class/type to describe our data \
 **@extend** - Allows declaration of hierarchies of classes, similar to rdfs:subclassOf \
 **@comment** - Use this to describe the type or property \
@@ -33,6 +34,17 @@ Example:
 {
     @namespace : "https://schema.alkun.org",
 
+    @instance : {
+        @type : "Imam",
+        identifier : "about",
+
+        "creator": {
+            "@type": "Person",
+            "name": "Akmal Mualim",
+            "url": "http://alkun.org/me/akmal-mualim"
+        }
+    },
+
     @define : {
         @type : "Imam",
         @extend : "Person",
@@ -43,15 +55,15 @@ Example:
         },
 
         @required : [ givenName, mosque, url ],
+    },
 
-        @example : {
-            @type : "Imam",
-            givenName : "Abdul",
-            mosque : {
-                name : "al-Masjid al-Nabawi"
-            },
-            url : "/masjid-nabawi"
-        }
+    @example : {
+        @type : "Imam",
+        givenName : "Abdul",
+        mosque : {
+            name : "al-Masjid al-Nabawi"
+        },
+        url : "/masjid-nabawi"
     }
 }
 ```
@@ -80,7 +92,7 @@ foaf:page : "http://www.example.com/roadster"
 We use Bayan to build our own vocabulary which has good compatibility with Schema.org.
 
 
-#### Data Types
+### Data Types
 
 Below are basic data types defined inside [DataType.json](https://alkun.org/schema/DataType.json)
 
@@ -92,6 +104,26 @@ Below are basic data types defined inside [DataType.json](https://alkun.org/sche
 **Time** - A time value in form of hh:mm:ss[Z|(+|-)hh:mm] \
 **DateTime** - A combination of date and time in ISO 8601 format \
 **URL** - A Uniform Resource Locator or web address
+
+
+## Bayan Service / API
+
+Bayan service is based on [SADI Framework](https://github.com/sadiframework/svn-import).
+
+1. Services are stateless and atomic.
+2. Endpoints respond to HTTP GET for schema/Interface definition and instance (data object) only.
+3. Service interfaces are defined as Schema Type/Class.
+4. Services consume and produce data in Bayan message format.
+5. Services are invoked through plain HTTP POST of Bayan message to the service endpoint.
+
+
+## Endpoints
+
+Below are default endpoints for alkun.org
+
+1. Schema - [https://alkun.org/schema](https://alkun.org/schema) - eg: https://alkun.org/schema/Person
+2. Bayan message service - [https://alkun.org/bayan](https://alkun.org/bayan)
+3. Instance / Data object - [https://alkun.org/i/](https://alkun.org/i/)  - eg: https://alkun.org/i/Person/abdullah
 
 
 *Notes: Previously the specification was based on Open-API. We decided to move to semantic web format instead to allow a meaningful API etc.*
