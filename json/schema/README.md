@@ -27,7 +27,8 @@ List of Keywords:
 **@enum** - Enumeration allow you to set a list of allowed values \
 **@default** - Default value for a property \
 **@required** - a set of required properties for the schema \
-**@example** - Use to showcase example usage of the schema definition
+**@example** - Use to showcase example usage of the schema definition \
+**@draft** - Mark definition on the file is a draft. Should be placed on top before namespace
 
 Example:
 ```

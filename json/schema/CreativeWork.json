@@ -1,4 +1,5 @@
 {
+    "@draft": "experiment for custom validator, redirect to schema.org for now",
     "@namespace": "https://alkun.org/schema",
 
     "@define": {
